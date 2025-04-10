@@ -17,13 +17,12 @@ player_speed = 5  # Velocidade de movimentação
 
 player2_color = (255, 0, 0) 
 player2_size = 50  
-player2_x = 100
-player2_y = 100 
-player2_position = random.randint(1,1080)
+player2_x = random.randint(0, 1080)
+player2_y = random.randint(0, 768)  
 
 player1 = [player_color, player_size, player_x, player_y, player_speed]    
 
-player2 = [player2_color, player2_size, player2_x, player2_y,player2_position]
+player2 = [player2_color, player2_size, player2_x, player2_y]
 
 # Loop principal do jogo
 while running:
@@ -41,19 +40,7 @@ while running:
     if keys[pygame.K_UP]:
         player_y -= player_speed  # Mover para cima
     if keys[pygame.K_DOWN]:
-        player_y += player_speed  # Mover para baixo 
-
-    if player1 in range(player2): 
-       contador = 0
-       while True: 
-           player1[1] = +20  
-           break
-       contador +=0
-
-    
-     
-
-
+        player_y += player_speed  # Mover para baixo                     
 
     
 
