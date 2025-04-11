@@ -15,10 +15,10 @@ player_color = (0, 128, 0)  # Amarelo
 player_size = 30  # Tamanho do quadrado/player
 player_x = 150  # Posição inicial do quadrado/player
 player_y = 150  # Posição inicial do quadrado/player
-player_speed = 5  # Velocidade de movimentação 
+player_speed = 10  # Velocidade de movimentação 
 
 maca_color = (255, 0, 0) 
-maca_size = 50  
+maca_size = 30  
 maca_x = random.randint(0, 800)
 maca_y = random.randint(0, 768)  
 
@@ -27,15 +27,17 @@ player1 = [player_color, player_size, player_x, player_y, player_speed]
 maca = [maca_color, maca_size, maca_x, maca_y]    
 
  
-def cobra_comer_maca(playerx,playery):   
-   if playerx == maca_x or playery == maca_y:
-       pygame.draw.rect(screen, player_color, (player_x, player_y, player_size, player_size)) 
-       return True 
-   else:
-       return False   
+def checar_se_cobra_comeu_maca(x,y,size,macax,macay,macaSize):
+    if x ==macaSize or  x + size == macax or y == macaSize or y + size == maca_y:
+        print("player comeu maçã +1 ponto")  
+         
+        
+
+        
+     
 
  
-def checarSePlayerSaiu(x, y, size, screen_width, screen_height): 
+def checar_se_slayer_saiu(x, y, size, screen_width, screen_height): 
     if x < 0 or x + size > screen_width or y < 0 or y + size > screen_height: 
         print("O player saiu da tela. Encerrando o jogo...") 
         pygame.quit() 
@@ -59,19 +61,15 @@ while running:
     if keys[pygame.K_UP]:
         player_y -= player_speed  # Mover para cima
     if keys[pygame.K_DOWN]:
-        player_y += player_speed  # Mover para baixo                
+        player_y += player_speed  # Mover para baixo                 
+             
  
-    checarSePlayerSaiu(player_x,player_y,player_size,800, 768)
+    checar_se_slayer_saiu(player_x,player_y,player_size,800, 768) 
 
-    total = cobra_comer_maca(player_x,player_y)        
-     
-    # if total == True:
-    #     while True:
-    #         total 
-    #         return False 
-        
-
-
+    a = checar_se_cobra_comeu_maca(player_x,player_y,player_size,maca_x,maca_y,maca_size)
+    if a == True: 
+       pygame.draw.rect(screen, player_color, (player_x, player_y, player_size, player_size)) 
+             
         
     # Preenche o fundo com a cor azul
     screen.fill((0, 0, 255))
